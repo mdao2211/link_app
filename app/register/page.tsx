@@ -1,11 +1,13 @@
-"use client";
-import Image from "next/image";
-import githubLogo from "@/public/github.png";
-import Link from "next/link";
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable react/react-in-jsx-scope */
+'use client'
+import Image from 'next/image'
+import githubLogo from '@/public/github.png'
+import Link from 'next/link'
 import {
   GithubSignInButton,
-  GoogleSignInButton,
-} from "@/components/authButtons";
+  GoogleSignInButton
+} from '@/components/authButtons'
 
 const register = () => {
   return (
@@ -29,7 +31,7 @@ const register = () => {
             </div>
             <div className="text-center">
               <p className="text-center text-sm bg-white py-4">
-                Already have an account?{" "}
+                Already have an account?{' '}
                 <Link
                   className="font-semibold text-gray-500 transition-colors hover:text-black"
                   href="/signin"
@@ -42,6 +44,6 @@ const register = () => {
         </div>
       </div>
     </>
-  );
-};
-export default register;
+  )
+}
+export default register

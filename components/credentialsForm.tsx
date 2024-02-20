@@ -1,35 +1,39 @@
-"use client";
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+'use client'
 
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 interface CredentialsFormProps {
-  csrfToken?: string;
+  csrfToken?: string
 }
 
-export function CredentialsForm(props: CredentialsFormProps) {
-  const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
+export function CredentialsForm (props: CredentialsFormProps) {
+  const router = useRouter()
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = async (e: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
+  const handleSubmit = async (e: { preventDefault: () => void, currentTarget: HTMLFormElement | undefined }) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
 
-    const signInResponse = await signIn("credentials", {
-      email: data.get("email"),
-      password: data.get("password"),
-      redirect: false,
-    });
+    const signInResponse = await signIn('credentials', {
+      email: data.get('email'),
+      password: data.get('password'),
+      redirect: false
+    })
 
     if (signInResponse && !signInResponse.error) {
-      //Redirect to homepage (/timeline)
-      router.push("/page");
+      // Redirect to homepage (/timeline)
+      router.push('/page')
     } else {
-      console.log("Error: ", signInResponse);
-      setError("Your Email or Password is wrong!");
+      console.log('Error: ', signInResponse)
+      setError('Your Email or Password is wrong!')
     }
-  };
+  }
 
   return (
     <form
@@ -64,5 +68,5 @@ export function CredentialsForm(props: CredentialsFormProps) {
         Log in
       </button>
     </form>
-  );
+  )
 }

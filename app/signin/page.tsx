@@ -1,19 +1,24 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   CredentialsSignInButton,
   GithubSignInButton,
-  GoogleSignInButton,
-} from "@/components/authButtons";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { CredentialsForm } from "@/components/credentialsForm";
-import Link from "next/link";
-export default async function SignInPage() {
-  const session = await getServerSession(authConfig);
+  GoogleSignInButton
+} from '@/components/authButtons'
+import { getServerSession } from 'next-auth'
+import { authConfig } from '@/lib/auth'
+import { redirect } from 'next/navigation'
+import { CredentialsForm } from '@/components/credentialsForm'
+import Link from 'next/link'
+export default async function SignInPage () {
+  const session = await getServerSession(authConfig)
 
-  console.log("Session: ", session);
+  console.log('Session: ', session)
 
-  if (session) return redirect("/signin");
+  if (session) return redirect('/signin')
 
   return (
     <div className="flex h-screen w-screen justify-center">
@@ -29,7 +34,7 @@ export default async function SignInPage() {
           <CredentialsForm />
           <div className="text-center">
             <p className="text-center text-sm text-gray-500 pt-8">
-              Don't have an account?{" "}
+              Don't have an account?{' '}
               <Link
                 className="font-semibold text-gray-500 transition-colors hover:text-black"
                 href="/register"
@@ -41,5 +46,5 @@ export default async function SignInPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
