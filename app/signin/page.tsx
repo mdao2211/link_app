@@ -8,18 +8,9 @@ import {
   GithubSignInButton,
   GoogleSignInButton
 } from '@/components/authButtons'
-import { getServerSession } from 'next-auth'
-import { authConfig } from '@/lib/auth'
-import { redirect } from 'next/navigation'
 import { CredentialsForm } from '@/components/credentialsForm'
 import Link from 'next/link'
 export default async function SignInPage () {
-  const session = await getServerSession(authConfig)
-
-  console.log('Session: ', session)
-
-  if (session) return redirect('/signin')
-
   return (
     <div className="flex h-screen w-screen justify-center">
       <div>
